@@ -3,10 +3,7 @@
 
 using std::cout;
 using std::endl;
-#define print(frame)\
-    cout << "===== " << #frame << " =====" << endl;\
-    cout << frame << endl;\
-    cout << endl;
+#include "util.hpp"
 
 void check(double x0, double y0, double theta0, double x1, double y1, double theta1) {
     cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;

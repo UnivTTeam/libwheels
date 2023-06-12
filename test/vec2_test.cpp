@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include <linear_algebra/Vec2.hpp>
-#include <util/print.hpp>
+#include "util.hpp"
 
 using linear::Vec2d;
 using std::cout, std::cin, std::endl;

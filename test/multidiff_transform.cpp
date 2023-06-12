@@ -4,10 +4,7 @@
 using std::cout;
 using std::endl;
 
-#define print(frame)\
-    cout << "===== " << #frame << " =====" << endl;\
-    cout << (frame) << endl;\
-    cout << endl;
+#include "util.hpp"
 
 int main()
 {

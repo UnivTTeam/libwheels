@@ -14,11 +14,11 @@ struct Vec2 {
   T norm() { return std::sqrt(x * x + y * y); }
 
   Vec2 operator+(const Vec2<T>& other) const {
-    return Vec2{.x = this->x + other.x, .y = this->y + other.y};
+    return Vec2(this->x + other.x, this->y + other.y);
   }
 
   Vec2 operator-(const Vec2<T>& other) const {
-    return Vec2{.x = this->x - other.x, .y = this->y - other.y};
+    return Vec2(this->x - other.x, this->y - other.y);
   }
 
   T operator*(const Vec2<T>& other) const {
@@ -26,15 +26,15 @@ struct Vec2 {
   }
 
   Vec2 operator*(const T& ratio) const {
-    return Vec2{.x = this->x * ratio, .y = this->y * ratio};
+    return Vec2(this->x * ratio, this->y * ratio);
   }
 
   Vec2 operator/(const T& ratio) const {
-    return Vec2{.x = this->x / ratio, .y = this->y / ratio};
+    return Vec2(this->x / ratio, this->y / ratio);
   }
 
   Vec2 operator-() const {
-    return Vec2{.x = -this->x, .y = -this->y};
+    return Vec2(-this->x, -this->y);
   }
 };
 

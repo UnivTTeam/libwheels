@@ -8,12 +8,7 @@
 using std::cout;
 using std::endl;
 
-#define STEP2_DEBUG_SKIP
-
-#define print(frame)\
-    cout << "===== " << #frame << " =====" << endl;\
-    cout << frame << endl;\
-    cout << endl;
+#include "util.hpp"
 
 template <class T, long long N>
 struct Polynomial
@@ -211,9 +206,10 @@ int main()
         fs << "        print(['vx', 'vy', 'omega', 'ax', 'ay', 'alpha', 'dax', 'day', 'dalpha'][i-1])" << endl;
         fs << "        plt.plot(A[0], A[i])" << endl;
         fs << "        plt.plot(B[0], B[i])" << endl;
-        fs << "        plt.show()" << endl;
+        fs << "        plt.pause(1.0)" << endl;
+        fs << "        plt.cla()" << endl;
         fs << "" << endl;
-        fs << "#compare('numerical2.log', 'theoretical2.log')" << endl;
+        fs << "compare('numerical2.log', 'theoretical2.log')" << endl;
         fs << "compare('numerical3.log', 'theoretical3.log')" << endl;
     }
 

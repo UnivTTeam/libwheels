@@ -3,7 +3,11 @@
 
 #include <algorithm>
 
+#ifdef LibraryTest
 #include <linear_algebra/Mat2.hpp>
+#else
+#include "../linear_algebra/Mat2.hpp"
+#endif
 
 namespace Transform
 {
