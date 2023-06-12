@@ -34,7 +34,7 @@ struct MultidiffTransform
             if(i<K){
                 dynamic_frame[i] = frame.dynamic_frame[i];
             }else{
-                dynamic_frame[i] = Transform::DynamicTransform<T>(0., 0., 0.);
+                dynamic_frame[i] = Transform::DynamicTransform<T>(0, 0, 0);
             }
         }
     }
@@ -44,7 +44,7 @@ struct MultidiffTransform
     {
         static_assert(N < 4, "MultidiffTransform dimension must less than 4;");
         for(int i=0; i<N; i++){
-            dynamic_frame[i] = Transform::DynamicTransform<T>(0., 0., 0.);
+            dynamic_frame[i] = Transform::DynamicTransform<T>(0, 0, 0);
         }
     }
 
@@ -192,6 +192,30 @@ struct MultidiffTransform
         }
         return ret;
     }
+
+    MultidiffTransform<T, N> timeDevelopment(T dt) const
+    {
+        if(N==0){
+            MultidiffTransform<T, N> frame;
+            return frame.static_frame = static_frame;
+        }
+
+        MultidiffTransform<T, N> frame;
+        frame.static_frame = StaticTransform<T>(
+                static_frame.pos + dynamic_frame[0].pos * dt, 
+                static_frame.rot.getAngle() + dynamic_frame[0].rot * dt);
+
+        for(int i=0; i<N-1; i++){
+            frame.dynamic_frame[i] = DynamicTransform<T>(
+                dynamic_frame[i].pos + dt * dynamic_frame[i+1].pos,
+                dynamic_frame[i].rot + dt * dynamic_frame[i+1].rot);
+        }
+        
+        frame.dynamic_frame[N-1] = dynamic_frame[N-1];
+
+        return frame;
+    }
+   
 
     StaticTransform<T> static_frame;
     std::array<DynamicTransform<T>, N> dynamic_frame;

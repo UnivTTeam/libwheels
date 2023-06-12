@@ -1,5 +1,5 @@
 #include <iostream>
-#include <transform2d/transform.hpp>
+#include <transform2d/transform2d.hpp>
 
 using std::cout;
 using std::endl;
@@ -8,17 +8,18 @@ using std::endl;
 
 int main()
 {
-  Transform::StaticTransform<double> pos(1, 0, M_PI / 2.0);
-  Transform::DynamicTransform<double> vel(0, 1, 0);
-  Transform::DynamicTransform<double> acc(-1, 0, 0);
+  Transform::StaticTransform<double> pos(2.0, 3.0, M_PI / 3.0);
+  Transform::DynamicTransform<double> vel(5.0, 20., 1.0);
 
-  Transform::MultidiffTransform<double, 2> frame(pos, vel, acc);
+  Transform::MultidiffTransform<double, 1> frame(pos, vel);
+
+  Transform::StaticTransform<double> sub_pos(20.0, -40.0, -M_PI / 2.0);
+  auto sub_frame = frame + sub_pos;
+  
+  print(sub_frame);
+
+  auto recalc_frame = sub_frame + (-sub_pos);
+  print(recalc_frame);
 
   print(frame);
-
-  auto [vx, vy] = vel.getPos();
-  print(vx);
-  print(vy);
-
-  print(-pos+frame);
 }
