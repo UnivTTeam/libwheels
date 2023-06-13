@@ -1,3 +1,5 @@
+#ifdef LibraryTest
+
 #include <iostream>
 #include <transform2d/transform2d.hpp>
 
@@ -23,3 +25,4 @@ int main()
 
   print(frame);
 }
+#endif

@@ -1,3 +1,4 @@
+#ifdef LibraryTest
 #include <iostream>
 #include <fstream>
 #include <random>
@@ -26,3 +27,4 @@ int main()
     auto t_frame = get(t);
     print(t_frame);
 }
+#endif

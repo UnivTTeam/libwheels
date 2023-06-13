@@ -1,3 +1,4 @@
+#ifdef LibraryTest
 #include <iostream>
 
 #include <linear_algebra/Mat2.hpp>
@@ -15,3 +16,4 @@ int main() {
   print(A * x);
   print(A * (A * x));
 }
+#endif

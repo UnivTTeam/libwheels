@@ -1,3 +1,4 @@
+#ifdef LibraryTest
 #include <iostream>
 #include <transform2d/static_transform.hpp>
 
@@ -22,3 +23,4 @@ int main()
 
   check(1, 4, M_PI, 5, 2, -M_PI / 2.0);
 }
+#endif

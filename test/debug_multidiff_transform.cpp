@@ -1,3 +1,4 @@
+#ifdef LibraryTest
 #include <iostream>
 #include <fstream>
 #include <random>
@@ -158,3 +159,4 @@ int main()
     }
 }
 
+#endif

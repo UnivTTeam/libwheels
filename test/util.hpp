@@ -1,3 +1,4 @@
+#ifdef LibraryTest
 #pragma once
 #include <iostream>
 
@@ -8,3 +9,4 @@ inline void print_impl(X x, Y y) {
 }
 #define print(a) ::util::print_impl(#a, a)
 }  // namespace util
+#endif

@@ -1,3 +1,4 @@
+#ifdef LibraryTest
 #include <iostream>
 
 #include <linear_algebra/Vec2.hpp>
@@ -19,3 +20,4 @@ int main() {
   print(v.norm());
   print(d(v, p));
 }
+#endif

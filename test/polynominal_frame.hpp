@@ -1,3 +1,4 @@
+#ifdef LibraryTest
 #pragma once
 #include <iostream>
 
@@ -68,3 +69,4 @@ Transform::MultidiffTransform<T, 3> calcPolynomialFrame(Polynomial<T, A> x, Poly
 
     return Transform::MultidiffTransform<T, 3>(s, d1, d2, d3);
 }
+#endif
