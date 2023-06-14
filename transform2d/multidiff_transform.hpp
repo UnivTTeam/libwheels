@@ -193,27 +193,21 @@ struct MultidiffTransform
         return ret;
     }
 
-    MultidiffTransform<T, N> timeDevelopment(T dt) const
+    void timeDevelopment(T dt)
     {
         if(N==0){
-            MultidiffTransform<T, N> frame;
-            return frame.static_frame = static_frame;
+            return;
         }
 
-        MultidiffTransform<T, N> frame;
-        frame.static_frame = StaticTransform<T>(
+        static_frame = StaticTransform<T>(
                 static_frame.pos + dynamic_frame[0].pos * dt, 
                 static_frame.rot.getAngle() + dynamic_frame[0].rot * dt);
 
         for(int i=0; i<N-1; i++){
-            frame.dynamic_frame[i] = DynamicTransform<T>(
+            dynamic_frame[i] = DynamicTransform<T>(
                 dynamic_frame[i].pos + dt * dynamic_frame[i+1].pos,
                 dynamic_frame[i].rot + dt * dynamic_frame[i+1].rot);
         }
-        
-        frame.dynamic_frame[N-1] = dynamic_frame[N-1];
-
-        return frame;
     }
    
 

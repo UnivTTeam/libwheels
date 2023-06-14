@@ -22,8 +22,9 @@ int main()
     auto init_frame = get(0);
     print(init_frame);
     double t = 1.0;
-    auto developted_frame = init_frame.timeDevelopment(t);
-    print(developted_frame);
+    init_frame.timeDevelopment(t);
+    std::cout << "developed" << endl;
+    print(init_frame);
     auto t_frame = get(t);
     print(t_frame);
 }
